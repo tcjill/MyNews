@@ -25,7 +25,9 @@ import java.util.List;
  */
 public final class QueryUtils {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     /**
@@ -182,7 +184,7 @@ public final class QueryUtils {
                 if (currentNewsArticle.getJSONArray("tags").length() > 0) {
                     // If so, extract its (webTitle) value for the author's name
                     NewsArticleAuthor = currentNewsArticle.getJSONArray("tags").getJSONObject(0).getString("webTitle");
-                }else{
+                } else {
                     NewsArticleAuthor = "No Author Listed";
                 }
 
@@ -213,7 +215,7 @@ public final class QueryUtils {
     }
 
     // Create a formatDate
-    private static String formatDate(String NewsArticlePublicationDate){
+    private static String formatDate(String NewsArticlePublicationDate) {
 
         // Get ride of time zone information and only return the date format
         return NewsArticlePublicationDate.substring(0, NewsArticlePublicationDate.indexOf("T"));

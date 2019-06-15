@@ -5,15 +5,11 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -27,7 +23,9 @@ public class NewsActivity extends AppCompatActivity
 
     private static final String LOG_TAG = NewsActivity.class.getName();
 
-    /** URL for entertainment news articles from the Guardian's website */
+    /**
+     * URL for entertainment news articles from the Guardian's website
+     */
     private static final String GUARDIAN_NEWS_REQUEST_URL =
             "https://content.guardianapis.com/search?q=arizona&from-news_article_publication_date=2012-02-01&show-tags=contributor&order-by=newest&show-references=author&api-key=377a2754-15b7-4f84-9f54-30b3a9443f79";
 
@@ -37,10 +35,14 @@ public class NewsActivity extends AppCompatActivity
      */
     private static final int NEWS_LOADER_ID = 1;
 
-    /** Adapter for the list of entertainment news articles */
+    /**
+     * Adapter for the list of entertainment news articles
+     */
     private NewsAdapter mAdapter;
 
-    /** TextView that is displayed when the list is empty */
+    /**
+     * TextView that is displayed when the list is empty
+     */
     private TextView mEmptyStateTextView;
 
     @Override
