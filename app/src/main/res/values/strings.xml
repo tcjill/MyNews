@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MyNews</string>
+    <string name="app_name">jillnews</string>
+    <string name="no_news_available">No news</string>
+    <string name="please_check_back_later_or_refresh">Check Again Later</string>
+    <string name="no_network_available">no network</string>
+    <string name="please_check_network_settings_and_refresh">check network settings</string>
+    <string name="separator_line">|</string>
 </resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- Layout for a single list item that displays an news -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <!-- Newspaper icon - will be next to section name -->
+            <ImageView
+                android:id="@+id/ninja_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ninja" />
+
+            <!-- TextView for the news article's section name -->
+            <TextView
+                android:id="@+id/news_article_section_name"
+                style="@style/SectionNameText"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/ninja_icon"
+                tools:text="Article Section"/>
+
+            <!-- TextView for the news article's title -->
+            <TextView
+                android:id="@+id/news_article_title"
+                style="@style/TitleText"
+                android:layout_marginLeft="4dp"
+                android:layout_below="@id/news_article_section_name"
+                tools:text="Article title" />
+
+            <!-- TextView for the news article's author -->
+            <TextView
+                android:id="@+id/news_article_author"
+                style="@style/DetailsText"
+                android:layout_below="@id/news_article_title"
+                android:layout_marginLeft="4dp"
+                tools:text="Author name"/>
+
+            <!--
+            TextView that separates article author
+            and publication date TextViews
+            -->
+            <TextView
+                android:id="@+id/separator_between_author_date"
+                style="@style/DetailsText"
+                android:layout_toRightOf="@id/news_article_author"
+                android:layout_below="@id/news_article_title"
+                android:layout_marginLeft="20dp"
+                android:text="@string/separator_line"/>
+
+            <!-- TextView for the news article's publication date -->
+            <TextView
+                android:id="@+id/news_article_publication_date"
+                style="@style/DetailsText"
+                android:layout_toRightOf="@id/separator_between_author_date"
+                android:layout_below="@id/news_article_title"
+                android:layout_marginLeft="20dp"
+                tools:text="June 24"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
