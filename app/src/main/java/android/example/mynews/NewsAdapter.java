@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * An {@link NewsAdapter} knows how to create a list item layout for each entertainment news article
+ * An {@link NewsAdapter} knows how to create a list item layout for each news article
  * in the data source (a list of {@link News} objects).
  *
  * These list item layouts will be provided to an adapter view like ListView
@@ -31,7 +31,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     }
 
     /**
-     * Returns a list item view that displays information about the entertainment news article
+     * Returns a list item view that displays information about th news article
      * at the given position in the list of articles.
      */
     @Override

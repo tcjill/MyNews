@@ -6,7 +6,7 @@ import android.content.Context;
 import java.util.List;
 
 /**
- * Loads a list of earthquakes by using an AsyncTask to perform the
+ * Loads a list of news articles by the guardian by using an AsyncTask to perform the
  * network request to the given URL.
  */
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
@@ -42,7 +42,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
             return null;
         }
 
-        // Perform the network request, parse the response, and extract a list of earthquakes.
+        // Perform the network request, parse the response, and extract a list of news from the Guardian.
         List<News> news = QueryUtils.fetchNewsArticleData(mUrl);
         return news;
     }
