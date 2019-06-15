@@ -27,17 +27,17 @@ public class NewsActivity extends AppCompatActivity
 
     private static final String LOG_TAG = NewsActivity.class.getName();
 
-    /** URL for arizona news from Guardian dataset */
-    private static final String GUARDIAN_NEWS_REQUEST_URL = NewsActivity.class.getName();
-            "https://content.guardianapis.com/search?q=arizona%20news&api-key=test";
+    /** URL for entertainment news articles from the Guardian's website */
+    private static final String GUARDIAN_NEWS_REQUEST_URL =
+            "https://content.guardianapis.com/search?q=entertainment&from-news_article_publication_date=2019-02-02&show-tags=contributor&order-by=newest&show-references=author&api-key=fe0c6c04-c500-4c20-83bf-8ece43c8e676";
 
     /**
-     * Constant value for the earthquake loader ID. We can choose any integer.
+     * Constant value for the news loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int NEWS_LOADER_ID = 1;
 
-    /** Adapter for the list of earthquakes */
+    /** Adapter for the list of entertainment news articles */
     private NewsAdapter mAdapter;
 
     /** TextView that is displayed when the list is empty */
@@ -54,14 +54,12 @@ public class NewsActivity extends AppCompatActivity
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         newsListView.setEmptyView(mEmptyStateTextView);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        // Create a new adapter that takes an empty list of entertainment news articles as an input
         mAdapter = new NewsAdapter(this, new ArrayList<News>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         newsListView.setAdapter(mAdapter);
-
-
 
         // Set an item click listener on the ListView, which sends an intent to a web browser
         // to open a website with more information about the selected entertainment news article.
@@ -74,7 +72,7 @@ public class NewsActivity extends AppCompatActivity
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri newsUri = Uri.parse(currentNews.getNewsArticleUrl());
 
-                // Create a new intent to view the entertainment news article url
+                // Create a new intent to view the entertainment news article URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
                 // Send the intent to launch a new activity
@@ -105,7 +103,7 @@ public class NewsActivity extends AppCompatActivity
             loadingIndicator.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
-            mEmptyStateTextView.setText(R.string.no_internet_connection);
+            mEmptyStateTextView.setText(R.string.no_network_available);
         }
     }
 
@@ -122,7 +120,7 @@ public class NewsActivity extends AppCompatActivity
         loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display text stating no news articles have been found.
-        mEmptyStateTextView.setText(R.string.no_news_articles_found);
+        mEmptyStateTextView.setText(R.string.no_news_available);
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
@@ -132,10 +130,8 @@ public class NewsActivity extends AppCompatActivity
     }
 
     @Override
-    
     public void onLoaderReset(Loader<List<News>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }
 }
-
