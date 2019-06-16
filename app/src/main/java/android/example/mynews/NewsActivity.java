@@ -5,10 +5,12 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -112,6 +114,19 @@ public class NewsActivity extends AppCompatActivity
 
 
         return new NewsLoader(this, GUARDIAN_NEWS_REQUEST_URL);
+
+        /*
+
+
+        Uri baseUri = Uri.parse(GUARDIAN_NEWS_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("format", "geojson");
+        uriBuilder.appendQueryParameter("webTitle");
+        uriBuilder.appendQueryParameter("author", minMagnitude);
+
+
+        return new NewsLoader(this, uriBuilder.toString());*/
     }
 
     @Override
