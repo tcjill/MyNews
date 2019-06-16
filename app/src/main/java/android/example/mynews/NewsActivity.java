@@ -24,7 +24,7 @@ public class NewsActivity extends AppCompatActivity
     private static final String LOG_TAG = NewsActivity.class.getName();
 
     /**
-     * URL for entertainment news articles from the Guardian's website
+     * URL news articles from the Guardian's website
      */
     private static final String GUARDIAN_NEWS_REQUEST_URL =
             "https://content.guardianapis.com/search?q=arizona&from-news_article_publication_date=2012-02-01&show-tags=contributor&order-by=newest&show-references=author&api-key=377a2754-15b7-4f84-9f54-30b3a9443f79";
@@ -110,7 +110,7 @@ public class NewsActivity extends AppCompatActivity
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
 
-        
+
         return new NewsLoader(this, GUARDIAN_NEWS_REQUEST_URL);
     }
 
