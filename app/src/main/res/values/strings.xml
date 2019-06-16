@@ -5,4 +5,6 @@
     <string name="no_network_available">no network</string>
     <string name="please_check_network_settings_and_refresh">check network settings</string>
     <string name="separator_line">|</string>
+    <string name="API_KEY"></string>
+
 </resources>

@@ -111,22 +111,17 @@ public class NewsActivity extends AppCompatActivity
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-
-
-        return new NewsLoader(this, GUARDIAN_NEWS_REQUEST_URL);
-
-        /*
+       // return new NewsLoader(this, GUARDIAN_NEWS_REQUEST_URL);
 
 
         Uri baseUri = Uri.parse(GUARDIAN_NEWS_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
-        uriBuilder.appendQueryParameter("format", "geojson");
-        uriBuilder.appendQueryParameter("webTitle");
-        uriBuilder.appendQueryParameter("author", minMagnitude);
+        uriBuilder.appendQueryParameter("API_KEY","api-key");
+        uriBuilder.appendQueryParameter("DATE","date");
 
 
-        return new NewsLoader(this, uriBuilder.toString());*/
+        return new NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
