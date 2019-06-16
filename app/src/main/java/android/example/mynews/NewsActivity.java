@@ -36,7 +36,7 @@ public class NewsActivity extends AppCompatActivity
     private static final int NEWS_LOADER_ID = 1;
 
     /**
-     * Adapter for the list of entertainment news articles
+     * Adapter for the list of  news articles
      */
     private NewsAdapter mAdapter;
 

@@ -123,6 +123,10 @@ public final class QueryUtils {
      * parsing the given JSON response.
      */
     private static List<News> extractFeatureFromJson(String newsArticleJSON) {
+        String title;
+        String author;
+        String date;
+        String urlSource;
 
         if (TextUtils.isEmpty(newsArticleJSON)) {
             return null;
@@ -144,6 +148,7 @@ public final class QueryUtils {
             // which represents a list of results from the Guardian API request.
             JSONArray newsArticleResultsArray = newsArticleResponse.getJSONArray("results");
 
+
             // For each news article in the newsArticleResultsArray, create an {@link News} article object
             for (int i = 0; i < newsArticleResultsArray.length(); i++) {
 
@@ -156,9 +161,16 @@ public final class QueryUtils {
                 // Extract the value for the key called "webTitle"
                 String NewsArticleTitle = currentNewsArticle.getString("webTitle");
 
+
                 // Extract the value for the key called "webTitle" in the array "tags".
                 // This allows us to get the author's name.
                 String NewsArticleAuthor = "";
+                // Extract the value for the key called "webPublicationDate"
+
+                String NewsArticlePublicationDate = currentNewsArticle.getString("webPublicationDate");
+
+                // Extract the value for the key called "webUrl"
+                String NewsArticleUrl = currentNewsArticle.getString("webUrl");
 
                 // Check if array object "tags" has any value
                 if (currentNewsArticle.getJSONArray("tags").length() > 0) {
@@ -168,13 +180,6 @@ public final class QueryUtils {
                     NewsArticleAuthor = "No Author Listed";
                 }
 
-
-                // Extract the value for the key called "webPublicationDate"
-
-                String NewsArticlePublicationDate = formatDate(currentNewsArticle.getString("webPublicationDate"));
-
-                // Extract the value for the key called "webUrl"
-                String NewsArticleUrl = currentNewsArticle.getString("webUrl");
 
                 // Create a new {@link News} object with the news_article_section_name, NewsArticleTitle, NewsArticlePublicationDate,
                 // and NewsArticleUrl from the JSON response.
