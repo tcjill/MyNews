@@ -65,7 +65,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         // Find the TextView with view ID news_article_publication_date
         TextView NewsArticlePublicationDateView = (TextView) listItemView.findViewById(R.id.news_article_publication_date);
-        // Format the news_article_publication_date string (i.e. "Mar 3, 2019")
+
         String formattedArticlePublicationDate = (currentNews.getNewsArticlePublicationDate());
 
         // Display the publication date of the current entertainment news article in that TextView

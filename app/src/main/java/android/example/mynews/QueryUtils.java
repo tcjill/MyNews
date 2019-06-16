@@ -170,6 +170,7 @@ public final class QueryUtils {
 
 
                 // Extract the value for the key called "webPublicationDate"
+
                 String NewsArticlePublicationDate = formatDate(currentNewsArticle.getString("webPublicationDate"));
 
                 // Extract the value for the key called "webUrl"
@@ -194,7 +195,7 @@ public final class QueryUtils {
 
     private static String formatDate(String NewsArticlePublicationDate) {
 
-        return NewsArticlePublicationDate.substring(0, NewsArticlePublicationDate.indexOf("T"));
+        return NewsArticlePublicationDate;
     }
 
 }
