@@ -1,13 +1,10 @@
 package android.example.mynews;
 
-
 import android.text.TextUtils;
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,27 +16,16 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Helper methods related to requesting and receiving entertainment news article data
- * from the Guardian website.
- */
+
 public final class QueryUtils {
 
-    /**
-     * Tag for the log messages
-     */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
-    /**
-     * Create a private constructor because no one should ever create a {@link QueryUtils} object.
-     * This class is only meant to hold static variables and methods, which can be accessed
-     * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
-     */
     private QueryUtils() {
     }
 
     /**
-     * Query the Guardian's dataset and return a list of entertainment {@link News} article objects.
+     * Query the Guardian's dataset and return a list  {@link News} article objects.
      */
     public static List<News> fetchNewsArticleData(String requestUrl) {
         // Create URL object
@@ -56,7 +42,7 @@ public final class QueryUtils {
         // Extract relevant fields from the JSON response and create a list of {@link News}s
         List<News> news = extractFeatureFromJson(jsonResponse);
 
-        // Return the list of entertainment {@link News} articles
+        // Return the list of {@link News} articles
         return news;
     }
 
@@ -108,9 +94,6 @@ public final class QueryUtils {
                 urlConnection.disconnect();
             }
             if (inputStream != null) {
-                // Closing the input stream could throw an IOException, which is why
-                // the makeHttpRequest(URL url) method signature specifies than an IOException
-                // could be thrown.
                 inputStream.close();
             }
         }
@@ -140,7 +123,7 @@ public final class QueryUtils {
      * parsing the given JSON response.
      */
     private static List<News> extractFeatureFromJson(String newsArticleJSON) {
-        // If the JSON string is empty or null, then return early.
+
         if (TextUtils.isEmpty(newsArticleJSON)) {
             return null;
         }
@@ -148,20 +131,18 @@ public final class QueryUtils {
         // Create an empty ArrayList that we can start adding news to
         List<News> news = new ArrayList<>();
 
-        // Try to parse the JSON response string. If there's a problem with the way the JSON
-        // is formatted, a JSONException exception object will be thrown.
-        // Catch the exception so the app doesn't crash, and print the error message to the logs.
+
         try {
 
             // Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(newsArticleJSON);
 
             // Extract the JSONObject associated with the key called "response",
-            // which represents responses from the Guardian API request (or entertainment news articles).
+            // which represents responses from the Guardian API request.
             JSONObject newsArticleResponse = baseJsonResponse.getJSONObject("response");
 
             // Extract the JSONArray associated with the key called "results",
-            // which represents a list of results from the Guardian API request (or entertainment news articles).
+            // which represents a list of results from the Guardian API request.
             JSONArray newsArticleResultsArray = newsArticleResponse.getJSONArray("results");
 
             // For each entertainment news article in the newsArticleResultsArray, create an {@link News} article object
@@ -204,9 +185,6 @@ public final class QueryUtils {
             }
 
         } catch (JSONException e) {
-            // If an error is thrown when executing any of the above statements in the "try" block,
-            // catch the exception here, so the app doesn't crash. Print a log message
-            // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the news article JSON results", e);
         }
 
