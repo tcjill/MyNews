@@ -29,10 +29,7 @@ public class NewsActivity extends AppCompatActivity
     private static final String GUARDIAN_NEWS_REQUEST_URL =
             "https://content.guardianapis.com/search?q=arizona&from-news_article_publication_date=2012-02-01&show-tags=contributor&order-by=newest&show-references=author&api-key=377a2754-15b7-4f84-9f54-30b3a9443f79";
 
-    /**
-     * Constant value for the news loader ID. We can choose any integer.
-     * This really only comes into play if you're using multiple loaders.
-     */
+
     private static final int NEWS_LOADER_ID = 1;
 
     /**
@@ -112,6 +109,8 @@ public class NewsActivity extends AppCompatActivity
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
+
+        
         return new NewsLoader(this, GUARDIAN_NEWS_REQUEST_URL);
     }
 
