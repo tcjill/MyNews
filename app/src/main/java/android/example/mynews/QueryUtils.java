@@ -138,14 +138,13 @@ public final class QueryUtils {
             JSONObject baseJsonResponse = new JSONObject(newsArticleJSON);
 
             // Extract the JSONObject associated with the key called "response",
-            // which represents responses from the Guardian API request.
             JSONObject newsArticleResponse = baseJsonResponse.getJSONObject("response");
 
             // Extract the JSONArray associated with the key called "results",
             // which represents a list of results from the Guardian API request.
             JSONArray newsArticleResultsArray = newsArticleResponse.getJSONArray("results");
 
-            // For each entertainment news article in the newsArticleResultsArray, create an {@link News} article object
+            // For each news article in the newsArticleResultsArray, create an {@link News} article object
             for (int i = 0; i < newsArticleResultsArray.length(); i++) {
 
                 // Get a single news article at position i within the list of news articles
@@ -192,10 +191,9 @@ public final class QueryUtils {
         return news;
     }
 
-    // Create a formatDate
+
     private static String formatDate(String NewsArticlePublicationDate) {
 
-        // Get ride of time zone information and only return the date format
         return NewsArticlePublicationDate.substring(0, NewsArticlePublicationDate.indexOf("T"));
     }
 
